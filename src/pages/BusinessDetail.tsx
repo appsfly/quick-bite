@@ -1,18 +1,22 @@
 import { useState, type CSSProperties, type ReactNode } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { ChevronLeft, Heart, Share2, Bike, Truck } from "lucide-react";
-import { getBusinessById, getMenuItemsForBusiness } from "../data/mockData";
+import { ChevronLeft, Heart, Share2, Bike, Truck, Plus } from "lucide-react";
+import { getBusinessById, getMenuItemsForBusiness, getMenuItemById } from "../data/mockData";
 import FoodImage from "../components/FoodImage";
 import StarRating from "../components/StarRating";
 import SplitButton from "../components/SplitButton";
+import QuantityStepper from "../components/QuantityStepper";
 import { useCartStore } from "../store/cartStore";
 
 export default function BusinessDetail() {
   const { id } = useParams<{ id: string }>();
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const lines = useCartStore((s) => s.lines);
   const addItem = useCartStore((s) => s.addItem);
+  const incrementItem = useCartStore((s) => s.incrementItem);
+  const decrementItem = useCartStore((s) => s.decrementItem);
   const [liked, setLiked] = useState(false);
   const [showMore, setShowMore] = useState(false);
 
@@ -27,12 +31,11 @@ export default function BusinessDetail() {
     );
   }
 
-  const total = menuItems.reduce((sum, item) => sum + item.price, 0);
-
-  const handleAddAll = () => {
-    menuItems.forEach((item) => addItem(item.id, 1));
-    navigate("/cart");
-  };
+  const cartCount = lines.reduce((sum, line) => sum + line.quantity, 0);
+  const cartTotal = lines.reduce((sum, line) => {
+    const menuItem = getMenuItemById(line.itemId);
+    return sum + (menuItem ? menuItem.price * line.quantity : 0);
+  }, 0);
 
   return (
     <div style={{ display: "flex", flexDirection: "column", flex: 1 }}>
@@ -111,37 +114,70 @@ export default function BusinessDetail() {
 
         <div style={{ fontWeight: 700, fontSize: 15 }}>{t("picks_for_you")}</div>
         <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-          {menuItems.map((item) => (
-            <div
-              key={item.id}
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: 10,
-                border: "1px solid var(--color-border)",
-                borderRadius: "var(--radius-md)",
-                padding: 8,
-              }}
-            >
-              <FoodImage emoji={item.emoji} color={item.color} imageUrl={item.imageUrl} size="48px" fontSize="1.5rem" />
-              <div style={{ flex: 1 }}>
-                <div style={{ fontWeight: 600, fontSize: 13 }}>{item.name}</div>
-                {item.nativeName && (
-                  <div style={{ color: "var(--color-text-muted)", fontSize: 11 }}>{item.nativeName}</div>
+          {menuItems.map((item) => {
+            const quantity = lines.find((l) => l.itemId === item.id)?.quantity ?? 0;
+            return (
+              <div
+                key={item.id}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 10,
+                  border: "1px solid var(--color-border)",
+                  borderRadius: "var(--radius-md)",
+                  padding: 8,
+                }}
+              >
+                <FoodImage emoji={item.emoji} color={item.color} imageUrl={item.imageUrl} size="48px" fontSize="1.5rem" />
+                <div style={{ flex: 1 }}>
+                  <div style={{ fontWeight: 600, fontSize: 13 }}>{item.name}</div>
+                  {item.nativeName && (
+                    <div style={{ color: "var(--color-text-muted)", fontSize: 11 }}>{item.nativeName}</div>
+                  )}
+                  <div style={{ fontWeight: 700, fontSize: 13, marginTop: 4 }}>${item.price.toFixed(2)}</div>
+                </div>
+                {quantity > 0 ? (
+                  <QuantityStepper
+                    quantity={quantity}
+                    onIncrement={() => incrementItem(item.id)}
+                    onDecrement={() => decrementItem(item.id)}
+                    compact
+                  />
+                ) : (
+                  <button
+                    onClick={() => addItem(item.id)}
+                    aria-label={t("add_to_cart") ?? "Add to Cart"}
+                    style={{
+                      width: 28,
+                      height: 28,
+                      borderRadius: "50%",
+                      border: "none",
+                      background: "var(--color-primary)",
+                      color: "white",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      cursor: "pointer",
+                      flexShrink: 0,
+                    }}
+                  >
+                    <Plus size={14} />
+                  </button>
                 )}
               </div>
-              <div style={{ fontWeight: 700, fontSize: 13 }}>${item.price.toFixed(2)}</div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
-        <div style={{ marginTop: "auto", paddingTop: 8 }}>
-          <SplitButton
-            price={`$${total.toFixed(2)}`}
-            label={t("add_to_cart") ?? "Add to Cart"}
-            onClick={handleAddAll}
-          />
-        </div>
+        {cartCount > 0 && (
+          <div style={{ marginTop: "auto", paddingTop: 8 }}>
+            <SplitButton
+              price={`$${cartTotal.toFixed(2)}`}
+              label={t("view_cart") ?? "View Cart"}
+              onClick={() => navigate("/cart")}
+            />
+          </div>
+        )}
       </div>
     </div>
   );
