@@ -5,11 +5,15 @@ import LanguageDetector from "i18next-browser-languagedetector";
 import en from "./locales/en.json";
 import he from "./locales/he.json";
 import tl from "./locales/tl.json";
+import si from "./locales/si.json";
+import ta from "./locales/ta.json";
 
 export const SUPPORTED_LANGUAGES = [
   { code: "en", label: "English" },
   { code: "he", label: "עברית" },
   { code: "tl", label: "Tagalog" },
+  { code: "si", label: "සිංහල" },
+  { code: "ta", label: "தமிழ்" },
 ] as const;
 
 export const RTL_LANGUAGES = ["he"];
@@ -27,6 +31,8 @@ i18n
       en: { translation: en },
       he: { translation: he },
       tl: { translation: tl },
+      si: { translation: si },
+      ta: { translation: ta },
     },
     fallbackLng: "en",
     interpolation: { escapeValue: false },
