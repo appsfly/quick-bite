@@ -1,0 +1,56 @@
+:root {
+  --color-primary: #FF7A1A;
+  --color-primary-dark: #E86A0C;
+  --color-bg: #F7F7F9;
+  --color-surface: #FFFFFF;
+  --color-text: #1A1A1A;
+  --color-text-muted: #8B8B92;
+  --color-border: #ECECEF;
+  --color-star: #FFB020;
+  --color-danger: #E24C4C;
+
+  --radius-lg: 22px;
+  --radius-md: 16px;
+  --radius-sm: 10px;
+  --radius-pill: 999px;
+
+  --shadow-card: 0 8px 24px rgba(20, 20, 30, 0.06);
+  --shadow-float: 0 10px 30px rgba(255, 122, 26, 0.28);
+
+  --font-sans: "Segoe UI", "Noto Sans", "Noto Sans Thai", "Noto Sans Hebrew",
+    system-ui, -apple-system, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  overscroll-behavior-y: none;
+}
+
+button, input {
+  font-family: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
