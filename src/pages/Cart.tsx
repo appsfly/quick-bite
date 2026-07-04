@@ -9,6 +9,7 @@ import StarRating from "../components/StarRating";
 import QuantityStepper from "../components/QuantityStepper";
 import SplitButton from "../components/SplitButton";
 import { notifyOrderPlaced } from "../lib/notifyOrder";
+import { saveOrder } from "../lib/orderHistory";
 
 const DELIVERY_FEE = 2.0;
 
@@ -37,21 +38,25 @@ export default function Cart() {
   const total = subtotal + deliveryFee;
 
   const handleCheckout = () => {
+    const orderLines = rows.map(({ item, line, business }) => ({
+      name: item.name,
+      nativeName: item.nativeName,
+      businessName: business?.name ?? "",
+      quantity: line.quantity,
+      price: item.price,
+      lineTotal: item.price * line.quantity,
+    }));
+
     notifyOrderPlaced({
       orderedAt: new Date().toISOString(),
-      items: rows.map(({ item, line, business }) => ({
-        name: item.name,
-        nativeName: item.nativeName,
-        businessName: business?.name ?? "",
-        quantity: line.quantity,
-        price: item.price,
-        lineTotal: item.price * line.quantity,
-      })),
+      items: orderLines,
       subtotal,
       deliveryFee,
       total,
       voucherCode: voucher || undefined,
     });
+    saveOrder({ items: orderLines, subtotal, deliveryFee, total });
+
     setPlaced(true);
     clearCart();
   };

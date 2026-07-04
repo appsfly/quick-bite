@@ -37,5 +37,21 @@
   "order_placed_hint": "එය මාර්ගයේ පවතින විට අපි ඔබට දන්වන්නෙමු.",
   "back_to_home": "මුල් පිටුවට ආපසු",
   "choose_language": "ඔබේ භාෂාව තෝරන්න",
-  "continue": "ඉදිරියට යන්න"
+  "continue": "ඉදිරියට යන්න",
+  "login_title": "පිවිසෙන්න",
+  "signup_title": "ගිණුමක් සාදන්න",
+  "full_name": "සම්පූර්ණ නම",
+  "phone_number": "දුරකථන අංකය",
+  "password": "මුරපදය",
+  "login_button": "පිවිසෙන්න",
+  "signup_button": "ලියාපදිංචි වන්න",
+  "no_account": "ගිණුමක් නැද්ද?",
+  "have_account": "දැනටමත් ගිණුමක් තිබේද?",
+  "signup_link": "ලියාපදිංචි වන්න",
+  "login_link": "පිවිසෙන්න",
+  "error_invalid_credentials": "වැරදි දුරකථන අංකයක් හෝ මුරපදයක්",
+  "error_phone_exists": "මෙම දුරකථන අංකය දැනටමත් ලියාපදිංචි කර ඇත",
+  "logout": "ඉවත් වන්න",
+  "orders_empty": "තවම ඇණවුම් නැත",
+  "orders_empty_hint": "ඔබේ ඇණවුම් ඉතිහාසය මෙහි පෙන්වනු ඇත"
 }

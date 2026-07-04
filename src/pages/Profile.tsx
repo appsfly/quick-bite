@@ -1,12 +1,22 @@
 import { useTranslation } from "react-i18next";
-import { Check, Globe } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { Check, Globe, LogOut } from "lucide-react";
 import { SUPPORTED_LANGUAGES } from "../i18n";
+import { useAuthStore } from "../store/authStore";
 
 export default function Profile() {
   const { t, i18n } = useTranslation();
+  const navigate = useNavigate();
+  const currentUser = useAuthStore((s) => s.currentUser);
+  const logout = useAuthStore((s) => s.logout);
 
   const handleSelect = (code: string) => {
     i18n.changeLanguage(code);
+  };
+
+  const handleLogout = () => {
+    logout();
+    navigate("/login");
   };
 
   return (
@@ -26,11 +36,11 @@ export default function Profile() {
             fontWeight: 700,
           }}
         >
-          Q
+          {currentUser?.name.charAt(0).toUpperCase() ?? "Q"}
         </div>
         <div>
-          <div style={{ fontWeight: 700, fontSize: 17 }}>{t("nav_profile")}</div>
-          <div style={{ color: "var(--color-text-muted)", fontSize: 13 }}>+972 5X-XXX-XXXX</div>
+          <div style={{ fontWeight: 700, fontSize: 17 }}>{currentUser?.name ?? t("nav_profile")}</div>
+          <div style={{ color: "var(--color-text-muted)", fontSize: 13 }}>{currentUser?.phone}</div>
         </div>
       </div>
 
@@ -66,6 +76,27 @@ export default function Profile() {
           })}
         </div>
       </div>
+
+      <button
+        onClick={handleLogout}
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: 8,
+          padding: "12px 16px",
+          borderRadius: "var(--radius-md)",
+          border: "1px solid var(--color-border)",
+          background: "var(--color-surface)",
+          color: "var(--color-danger)",
+          fontWeight: 700,
+          fontSize: 14,
+          cursor: "pointer",
+        }}
+      >
+        <LogOut size={18} />
+        {t("logout")}
+      </button>
     </div>
   );
 }

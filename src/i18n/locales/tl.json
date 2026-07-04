@@ -37,5 +37,21 @@
   "order_placed_hint": "Ipapaalam namin kapag ito ay padating na.",
   "back_to_home": "Bumalik sa Home",
   "choose_language": "Piliin ang wika mo",
-  "continue": "Magpatuloy"
+  "continue": "Magpatuloy",
+  "login_title": "Mag-log In",
+  "signup_title": "Gumawa ng Account",
+  "full_name": "Buong Pangalan",
+  "phone_number": "Numero ng Telepono",
+  "password": "Password",
+  "login_button": "Mag-log In",
+  "signup_button": "Mag-sign Up",
+  "no_account": "Wala ka pang account?",
+  "have_account": "May account ka na?",
+  "signup_link": "Mag-sign Up",
+  "login_link": "Mag-log In",
+  "error_invalid_credentials": "Maling numero ng telepono o password",
+  "error_phone_exists": "Nakarehistro na ang numerong ito",
+  "logout": "Mag-log Out",
+  "orders_empty": "Wala pang mga order",
+  "orders_empty_hint": "Lalabas dito ang kasaysayan ng iyong mga order"
 }

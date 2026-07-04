@@ -37,5 +37,21 @@
   "order_placed_hint": "נעדכן אותך כשהיא בדרך.",
   "back_to_home": "חזרה לדף הבית",
   "choose_language": "בחר שפה",
-  "continue": "המשך"
+  "continue": "המשך",
+  "login_title": "התחברות",
+  "signup_title": "יצירת חשבון",
+  "full_name": "שם מלא",
+  "phone_number": "מספר טלפון",
+  "password": "סיסמה",
+  "login_button": "התחבר",
+  "signup_button": "הרשמה",
+  "no_account": "אין לך חשבון?",
+  "have_account": "כבר יש לך חשבון?",
+  "signup_link": "הרשמה",
+  "login_link": "התחברות",
+  "error_invalid_credentials": "מספר טלפון או סיסמה שגויים",
+  "error_phone_exists": "מספר הטלפון הזה כבר רשום במערכת",
+  "logout": "התנתקות",
+  "orders_empty": "אין עדיין הזמנות",
+  "orders_empty_hint": "היסטוריית ההזמנות שלך תופיע כאן"
 }

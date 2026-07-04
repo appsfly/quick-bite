@@ -37,5 +37,21 @@
   "order_placed_hint": "We'll notify you when it's on the way.",
   "back_to_home": "Back to Home",
   "choose_language": "Choose your language",
-  "continue": "Continue"
+  "continue": "Continue",
+  "login_title": "Log In",
+  "signup_title": "Create Account",
+  "full_name": "Full Name",
+  "phone_number": "Phone Number",
+  "password": "Password",
+  "login_button": "Log In",
+  "signup_button": "Sign Up",
+  "no_account": "Don't have an account?",
+  "have_account": "Already have an account?",
+  "signup_link": "Sign Up",
+  "login_link": "Log In",
+  "error_invalid_credentials": "Invalid phone number or password",
+  "error_phone_exists": "This phone number is already registered",
+  "logout": "Log Out",
+  "orders_empty": "No orders yet",
+  "orders_empty_hint": "Your order history will show up here"
 }
