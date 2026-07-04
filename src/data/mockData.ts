@@ -1,4 +1,4 @@
-import type { Business, Category, MenuItem } from "../types";
+import type { Business, Continent, MenuItem } from "../types";
 
 import adoboPlate from "../assets/food/adobo-plate.jpg";
 import adoboTacos from "../assets/food/adobo-tacos.jpg";
@@ -13,11 +13,12 @@ import butterChicken from "../assets/food/butter-chicken.jpg";
 import dimSum from "../assets/food/dim-sum.jpg";
 import sriLankanCurry from "../assets/food/sri-lankan-curry.jpg";
 import strawberries from "../assets/food/strawberries.jpg";
+import eritreanPlatter from "../assets/food/eritrean-platter.jpg";
+import eritreanInjera from "../assets/food/eritrean-injera.jpg";
 
-export const categories: Category[] = [
-  { id: "food", labelKey: "cat_food", emoji: "🍜" },
-  { id: "stores", labelKey: "cat_stores", emoji: "🏪" },
-  { id: "groceries", labelKey: "cat_groceries", emoji: "🛒" },
+export const continents: Continent[] = [
+  { id: "asia", labelKey: "continent_asia", emoji: "🌏" },
+  { id: "africa", labelKey: "continent_africa", emoji: "🌍" },
 ];
 
 export const businesses: Business[] = [
@@ -29,6 +30,7 @@ export const businesses: Business[] = [
     rating: 4.7,
     reviewCount: 2300,
     category: "food",
+    continent: "asia",
     cuisine: "Filipino",
     deliveryTimeMin: 25,
     difficulty: "Easy",
@@ -46,6 +48,7 @@ export const businesses: Business[] = [
     rating: 4.8,
     reviewCount: 1450,
     category: "food",
+    continent: "asia",
     cuisine: "Thai",
     deliveryTimeMin: 30,
     difficulty: "Easy",
@@ -63,6 +66,7 @@ export const businesses: Business[] = [
     rating: 4.6,
     reviewCount: 980,
     category: "food",
+    continent: "asia",
     cuisine: "Nepali",
     deliveryTimeMin: 35,
     difficulty: "Medium",
@@ -80,6 +84,7 @@ export const businesses: Business[] = [
     rating: 4.7,
     reviewCount: 1680,
     category: "food",
+    continent: "asia",
     cuisine: "Indian",
     deliveryTimeMin: 28,
     difficulty: "Easy",
@@ -97,6 +102,7 @@ export const businesses: Business[] = [
     rating: 4.5,
     reviewCount: 610,
     category: "groceries",
+    continent: "asia",
     cuisine: "Chinese",
     deliveryTimeMin: 20,
     difficulty: "Easy",
@@ -114,6 +120,7 @@ export const businesses: Business[] = [
     rating: 4.4,
     reviewCount: 340,
     category: "stores",
+    continent: "asia",
     cuisine: "Sri Lankan",
     deliveryTimeMin: 22,
     difficulty: "Easy",
@@ -122,6 +129,24 @@ export const businesses: Business[] = [
     emoji: "🏪",
     color: "#EFE6FA",
     imageUrl: sriLankanCurry,
+  },
+  {
+    id: "b7",
+    name: "Asmara Kitchen",
+    ownerName: "Helen Tesfay",
+    ownerId: "88451203",
+    rating: 4.6,
+    reviewCount: 420,
+    category: "food",
+    continent: "africa",
+    cuisine: "Eritrean",
+    deliveryTimeMin: 32,
+    difficulty: "Medium",
+    description:
+      "Traditional Eritrean stews served with fresh injera, slow-cooked with authentic berbere spice blends.",
+    emoji: "🍲",
+    color: "#F5E0D3",
+    imageUrl: eritreanPlatter,
   },
 ];
 
@@ -194,6 +219,16 @@ export const menuItems: MenuItem[] = [
     emoji: "🍓",
     color: "#FBE1E6",
     imageUrl: strawberries,
+  },
+  {
+    id: "m8",
+    businessId: "b7",
+    name: "Beef Tsebhi with Injera",
+    nativeName: "ጸብሒ",
+    price: 22.0,
+    emoji: "🍲",
+    color: "#F5E0D3",
+    imageUrl: eritreanInjera,
   },
 ];
 

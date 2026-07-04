@@ -2,23 +2,23 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { MapPin, Search, SlidersHorizontal, ShoppingBag } from "lucide-react";
-import { businesses, categories } from "../data/mockData";
+import { businesses, continents } from "../data/mockData";
 import FoodImage from "../components/FoodImage";
 import StarRating from "../components/StarRating";
 import { useCartCount } from "../store/cartStore";
-import type { CategoryId } from "../types";
+import type { ContinentId } from "../types";
 
 export default function Home() {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const cartCount = useCartCount();
   const [query, setQuery] = useState("");
-  const [activeCategory, setActiveCategory] = useState<CategoryId | null>(null);
+  const [activeContinent, setActiveContinent] = useState<ContinentId | null>(null);
 
   const filtered = businesses.filter((b) => {
     const matchesQuery = b.name.toLowerCase().includes(query.toLowerCase());
-    const matchesCategory = !activeCategory || b.category === activeCategory;
-    return matchesQuery && matchesCategory;
+    const matchesContinent = !activeContinent || b.continent === activeContinent;
+    return matchesQuery && matchesContinent;
   });
 
   return (
@@ -145,16 +145,16 @@ export default function Home() {
         </div>
 
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 22 }}>
-          <span style={{ fontWeight: 700, fontSize: 16 }}>{t("categories")}</span>
+          <span style={{ fontWeight: 700, fontSize: 16 }}>{t("browse_by_continent")}</span>
           <span style={{ color: "var(--color-text-muted)", fontSize: 13 }}>{t("see_all")}</span>
         </div>
         <div style={{ display: "flex", gap: 20, marginTop: 12 }}>
-          {categories.map((cat) => {
-            const isActive = activeCategory === cat.id;
+          {continents.map((cont) => {
+            const isActive = activeContinent === cont.id;
             return (
               <button
-                key={cat.id}
-                onClick={() => setActiveCategory(isActive ? null : cat.id)}
+                key={cont.id}
+                onClick={() => setActiveContinent(isActive ? null : cont.id)}
                 style={{
                   display: "flex",
                   flexDirection: "column",
@@ -178,10 +178,10 @@ export default function Home() {
                     fontSize: 24,
                   }}
                 >
-                  {cat.emoji}
+                  {cont.emoji}
                 </div>
                 <span style={{ fontSize: 12, fontWeight: 600, color: isActive ? "var(--color-primary)" : "var(--color-text)" }}>
-                  {t(cat.labelKey)}
+                  {t(cont.labelKey)}
                 </span>
               </button>
             );

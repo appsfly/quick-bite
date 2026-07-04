@@ -1,7 +1,9 @@
 export type CategoryId = "food" | "stores" | "groceries";
 
-export interface Category {
-  id: CategoryId;
+export type ContinentId = "asia" | "africa";
+
+export interface Continent {
+  id: ContinentId;
   labelKey: string;
   emoji: string;
 }
@@ -25,6 +27,7 @@ export interface Business {
   rating: number;
   reviewCount: number;
   category: CategoryId;
+  continent: ContinentId;
   cuisine: string;
   deliveryTimeMin: number;
   difficulty: "Easy" | "Medium";
