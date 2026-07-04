@@ -15,6 +15,13 @@ import sriLankanCurry from "../assets/food/sri-lankan-curry.jpg";
 import strawberries from "../assets/food/strawberries.jpg";
 import eritreanPlatter from "../assets/food/eritrean-platter.jpg";
 import eritreanInjera from "../assets/food/eritrean-injera.jpg";
+import ghanaJollofHero from "../assets/food/ghana-jollof-hero.jpg";
+import ghanaJollof from "../assets/food/ghana-jollof.jpg";
+import waakye from "../assets/food/waakye.jpg";
+import nigeriaJollofHero from "../assets/food/nigeria-jollof-hero.jpg";
+import nigeriaJollof from "../assets/food/nigeria-jollof.jpg";
+import egusiSoup from "../assets/food/egusi-soup.jpg";
+import suya from "../assets/food/suya.jpg";
 
 export const continents: Continent[] = [
   { id: "asia", labelKey: "continent_asia", emoji: "🌏" },
@@ -148,6 +155,42 @@ export const businesses: Business[] = [
     color: "#F5E0D3",
     imageUrl: eritreanPlatter,
   },
+  {
+    id: "b8",
+    name: "Accra Home Kitchen",
+    ownerName: "Ama Owusu",
+    ownerId: "62094718",
+    rating: 4.7,
+    reviewCount: 560,
+    category: "food",
+    continent: "africa",
+    cuisine: "Ghanaian",
+    deliveryTimeMin: 33,
+    difficulty: "Easy",
+    description:
+      "Smoky Ghanaian jollof, waakye, and kelewele made fresh daily — just like home in Accra.",
+    emoji: "🍚",
+    color: "#F7E2C6",
+    imageUrl: ghanaJollofHero,
+  },
+  {
+    id: "b9",
+    name: "Lagos Kitchen",
+    ownerName: "Chidinma Okafor",
+    ownerId: "70415926",
+    rating: 4.8,
+    reviewCount: 730,
+    category: "food",
+    continent: "africa",
+    cuisine: "Nigerian",
+    deliveryTimeMin: 35,
+    difficulty: "Medium",
+    description:
+      "Nigerian jollof rice, egusi soup, and suya skewers, cooked with bold spices from home.",
+    emoji: "🍢",
+    color: "#F9DCC4",
+    imageUrl: nigeriaJollofHero,
+  },
 ];
 
 export const menuItems: MenuItem[] = [
@@ -229,6 +272,51 @@ export const menuItems: MenuItem[] = [
     emoji: "🍲",
     color: "#F5E0D3",
     imageUrl: eritreanInjera,
+  },
+  {
+    id: "m9",
+    businessId: "b8",
+    name: "Ghanaian Jollof Rice",
+    price: 19.0,
+    emoji: "🍚",
+    color: "#F7E2C6",
+    imageUrl: ghanaJollof,
+  },
+  {
+    id: "m10",
+    businessId: "b8",
+    name: "Waakye with Stew",
+    price: 17.5,
+    emoji: "🍛",
+    color: "#F2D9BE",
+    imageUrl: waakye,
+  },
+  {
+    id: "m11",
+    businessId: "b9",
+    name: "Nigerian Jollof Rice",
+    price: 19.0,
+    emoji: "🍚",
+    color: "#F9DCC4",
+    imageUrl: nigeriaJollof,
+  },
+  {
+    id: "m12",
+    businessId: "b9",
+    name: "Egusi Soup & Pounded Yam",
+    price: 21.0,
+    emoji: "🍲",
+    color: "#EFD8C0",
+    imageUrl: egusiSoup,
+  },
+  {
+    id: "m13",
+    businessId: "b9",
+    name: "Suya Skewers",
+    price: 14.0,
+    emoji: "🍢",
+    color: "#F4CBA8",
+    imageUrl: suya,
   },
 ];
 
